@@ -15,7 +15,7 @@ public class UtilityClassObject {
 	}
 	
 	public static void setTest(ExtentTest actTest) {
-		test.set(actTest);
+		test.set(actTest);;
 		
 	}
 	
