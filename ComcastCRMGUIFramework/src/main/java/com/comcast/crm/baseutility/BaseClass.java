@@ -47,7 +47,7 @@ public class BaseClass {
 	public void confAfterSuite() throws Throwable
 	{
 		System.out.println("===disconnect to db, report backup====");
-		dLib.closedbConnection();
+		//dLib.closedbConnection();
 		
 	}
 	
@@ -55,9 +55,12 @@ public class BaseClass {
 public void configBeforeMethod() throws Throwable {
 	System.out.println("==login==");
 	LoginPage lp=new LoginPage(driver);
-	String URL = fLib.getDataFromPropertiesFile("url");
-	String username =fLib.getDataFromPropertiesFile("username");
-	String Password = fLib.getDataFromPropertiesFile("password");
+	//String URL = fLib.getDataFromPropertiesFile("url");
+	//String username =fLib.getDataFromPropertiesFile("username");
+	//String Password = fLib.getDataFromPropertiesFile("password");
+	String URL =System.getProperty("url", fLib.getDataFromPropertiesFile("url"));
+	String username =System.getProperty("username",fLib.getDataFromPropertiesFile("username"));
+	String Password = System.getProperty("password",fLib.getDataFromPropertiesFile("password"));
 	lp.getLogin(URL, username, Password);
 	
 }
@@ -71,7 +74,8 @@ public void configBeforeMethod() throws Throwable {
 	@BeforeClass(groups= {"smokeTest","regressionTest"})
 	public void configBeforeclass() throws Throwable {
 		System.out.println("===launch browser===");
-		String BROWSER=fLib.getDataFromPropertiesFile("Browser");//browser;
+		//String BROWSER=fLib.getDataFromPropertiesFile("Browser");//browser;
+		String BROWSER=System.getProperty("browser", fLib.getDataFromPropertiesFile("Browser"));
 				//fLib.getDataFromPropertiesFile("Browser");
 
 		if(BROWSER.equals("chrome"))
