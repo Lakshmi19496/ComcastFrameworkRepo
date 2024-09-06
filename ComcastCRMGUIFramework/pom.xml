@@ -46,7 +46,7 @@
   </dependencies>
   <profiles>
   <profile>
-  <id>FR</id>
+  <id>FR1</id>
   <build>
 		<plugins>
 					
